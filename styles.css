@@ -1,23 +1,52 @@
 /* Add these styles for the paint smears */
-.paint-smears {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100px; /* Adjust width as needed */
-    height: 100px; /* Adjust height as needed */
-    background: linear-gradient(to bottom right, transparent 50%, grey 50%);
-    z-index: 2; /* Ensure paint smears are above the video */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
 }
 
 .video-container {
-    position: relative; /* Ensure video container is positioned relative */
-}
-
-.background-video {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure video covers entire container */
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Disable pointer events on the video */
+}
+
+.overlay-link {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Ensure the link is on top */
+    cursor: pointer;
+    opacity: 0; /* Make the link invisible */
+}
+
+#cursor-trail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px; /* Adjust width as needed */
+    height: 20px; /* Adjust height as needed */
+    background-color: rgba(128, 128, 128, 0.5); /* Grey color with transparency */
+    border-radius: 50%; /* Circular shape */
+    pointer-events: none; /* Disable pointer events on the trail */
+    z-index: 2; /* Ensure the trail is above the video */
+    transition: all 0.3s ease; /* Smooth transition */
 }
