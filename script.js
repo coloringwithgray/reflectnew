@@ -1,10 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var cursorTrail = document.getElementById("cursor-trail");
-
     document.addEventListener("mousemove", function(e) {
-        var x = e.clientX;
-        var y = e.clientY;
-        cursorTrail.style.left = x + "px";
-        cursorTrail.style.top = y + "px";
+        createTrail(e.clientX, e.clientY);
     });
+
+    function createTrail(x, y) {
+        var trail = document.createElement("div");
+        trail.className = "trail";
+        trail.style.left = x + "px";
+        trail.style.top = y + "px";
+        document.body.appendChild(trail);
+
+        setTimeout(function() {
+            trail.remove();
+        }, 1000); // Match this duration with the animation duration in CSS
+    }
 });
