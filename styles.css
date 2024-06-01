@@ -1,4 +1,3 @@
-/* Add these styles for the paint smears */
 body, html {
     margin: 0;
     padding: 0;
@@ -38,15 +37,20 @@ body, html {
     opacity: 0; /* Make the link invisible */
 }
 
-#cursor-trail {
+.trail {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px; /* Adjust width as needed */
-    height: 20px; /* Adjust height as needed */
+    width: 10px; /* Adjust width as needed */
+    height: 10px; /* Adjust height as needed */
     background-color: rgba(128, 128, 128, 0.5); /* Grey color with transparency */
     border-radius: 50%; /* Circular shape */
     pointer-events: none; /* Disable pointer events on the trail */
     z-index: 2; /* Ensure the trail is above the video */
-    transition: all 0.3s ease; /* Smooth transition */
+    animation: fade 1s forwards; /* Fade out animation */
+}
+
+@keyframes fade {
+    to {
+        opacity: 0;
+        transform: scale(2);
+    }
 }
